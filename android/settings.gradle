@@ -1,0 +1,3 @@
+rootProject.name = 'PontosRecargaBilheteUnico'
+
+include ':app'
