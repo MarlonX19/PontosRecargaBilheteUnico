@@ -6,7 +6,7 @@ class Index extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>MyClass</Text>
+                <Text>Hello app</Text>
             </View>
         );
     }
