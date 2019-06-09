@@ -1,12 +1,23 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import MapView from 'react-native-maps';
 
 
 class Index extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Hello app</Text>
+                <MapView
+                    style={{flex: 1}}
+                    region={{
+                        latitude: -22.365275 ,
+                        longitude: -47.368312,
+                        latitudeDelta: 0.0143,
+                        longitudeDelta: 0.0134
+                    }}
+                    showsUserLocation
+                    loadingEnabled
+                />
             </View>
         );
     }
@@ -15,10 +26,7 @@ class Index extends Component {
 // define your styles
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#2c3e50',
+        flex: 1
     },
 });
 
