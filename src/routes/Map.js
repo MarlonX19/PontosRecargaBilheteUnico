@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
 
+import Search from '../components/Search';
+
 
 class Map extends Component {
 
@@ -44,16 +46,10 @@ class Map extends Component {
                     showsUserLocation
                     loadingEnabled
                 />
+                <Search />  
             </View>
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-       
-    }
-});
 
 export default Map;
