@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Image, TouchableWithoutFeedback } from 'react-native';
 
-
 class MenuButton extends Component {
     render() {
         return (
