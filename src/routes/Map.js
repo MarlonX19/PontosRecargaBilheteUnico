@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Image, Text, StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
 
 import Search from '../components/Search';
 
 
 class MapScreen extends Component {
+    static navigationOptions = {
+        drawerLabel: 'Ver mapa',
+        drawerIcon: ({ tintColor }) => (
+          <Image
+            source={require('../assets/imgs/mapIcon.png')}
+            style={{color: 'grey', width: 20, height: 20}}
+          />
+        ),
+      };
 
  state = {
      region: null

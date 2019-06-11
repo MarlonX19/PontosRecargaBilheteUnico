@@ -2,71 +2,27 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Image, Button } from 'react-native';
 import { createAppContainer, createDrawerNavigator } from 'react-navigation';
 
-import MenuButton from '../components/MenuButton';
+import Home from './Home';
 import MapScreen from './Map';
+import About from './About';
 
-class Home extends React.Component {
-    render() {
-      return (
-        <View style={{ flex: 1 }}>
-          <View style={{ flex: 1}}>
-            <MenuButton navigation={this.props.navigation} />
-          </View>
-          <View style={{ flex: 9 }}>
-          <Button
-            onPress={() => this.props.navigation.navigate('Map')}
-            title="Ver mapa"
-            color="#841584"
-            accessibilityLabel="See the map"
-          />
-          </View>
-        </View>
-      );
-    }
-  }
-
-  class MyNotificationsScreen extends React.Component {
-    static navigationOptions = {
-      drawerLabel: 'Notifications',
-      drawerIcon: ({ tintColor }) => (
-        <Image
-          source={require('../assets/imgs/iconDrawer.png')}
-          style={[styles.icon, {tintColor: tintColor}]}
-        />
-      ),
-    };
-  
-    render() {
-      return (
-        <MenuButton navigation={ this.props.navigation } />
-      );
-    }
-  }
-  
-  const styles = StyleSheet.create({
-    icon: {
-      width: 24,
-      height: 24,
-    },
-  });
-  
 
 const MyDrawerNavigator = createDrawerNavigator({
     Home: {
         screen: Home,   
     },
 
-    Notifications: {
-      screen: MyNotificationsScreen,
+    Mapa: {
+      screen: MapScreen,
     },
 
-    Map: {
-      screen: MapScreen,
-    }
+    Sobre: {
+      screen: About,
+    },
+
 
   });
   
 const Main = createAppContainer(MyDrawerNavigator);
-
 
 export default Main;
