@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-
-import Map from './routes/Map';
 import Main from './routes/Main';
-
 
 class Index extends Component {
     render() {

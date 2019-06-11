@@ -5,7 +5,7 @@ import MapView from 'react-native-maps';
 import Search from '../components/Search';
 
 
-class Map extends Component {
+class MapScreen extends Component {
 
  state = {
      region: null
@@ -52,4 +52,4 @@ class Map extends Component {
     }
 }
 
-export default Map;
+export default MapScreen;

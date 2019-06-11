@@ -1,50 +1,30 @@
 import React, { Component } from 'react';
-import { View, Button, StyleSheet, Image, Text } from 'react-native';
+import { View, StyleSheet, Image, Button } from 'react-native';
 import { createAppContainer, createDrawerNavigator } from 'react-navigation';
 
+import MenuButton from '../components/MenuButton';
+import MapScreen from './Map';
 
 class Home extends React.Component {
-    static navigationOptions = {
-        headerVisible: true,
-        headerTitle: "Home",
-        headerRight: (
+    render() {
+      return (
+        <View style={{ flex: 1 }}>
+          <View style={{ flex: 1}}>
+            <MenuButton navigation={this.props.navigation} />
+          </View>
+          <View style={{ flex: 9 }}>
           <Button
-            onPress={() => this.props.navigation.openDrawer()}
-            title="Info"
-            color="#fff"
+            onPress={() => this.props.navigation.navigate('Map')}
+            title="Ver mapa"
+            color="#841584"
+            accessibilityLabel="See the map"
           />
-        ),
-      };
-  
-    render() {
-      return (
-        <Text>Olá mundo</Text>
+          </View>
+        </View>
       );
     }
   }
 
-
-class MyHomeScreen extends React.Component {
-    static navigationOptions = {
-      drawerLabel: 'Home',
-      drawerIcon: ({ tintColor }) => (
-        <Image
-          source={require('../assets/imgs/iconDrawer.png')}
-          style={[styles.icon, {tintColor: tintColor}]}
-        />
-      ),
-    };
-  
-    render() {
-      return (
-        <Button
-          onPress={() => this.props.navigation.openDrawer()}
-          title="Go to notifications"
-        />
-      );
-    }
-  }
-  
   class MyNotificationsScreen extends React.Component {
     static navigationOptions = {
       drawerLabel: 'Notifications',
@@ -58,10 +38,7 @@ class MyHomeScreen extends React.Component {
   
     render() {
       return (
-        <Button
-          onPress={() => this.props.navigation.closeDrawer()}
-          title="Go back home"
-        />
+        <MenuButton navigation={ this.props.navigation } />
       );
     }
   }
@@ -75,15 +52,18 @@ class MyHomeScreen extends React.Component {
   
 
 const MyDrawerNavigator = createDrawerNavigator({
-    start: {
+    Home: {
         screen: Home,   
     },
-    Home: {
-      screen: MyHomeScreen,
-    },
+
     Notifications: {
       screen: MyNotificationsScreen,
     },
+
+    Map: {
+      screen: MapScreen,
+    }
+
   });
   
 const Main = createAppContainer(MyDrawerNavigator);
