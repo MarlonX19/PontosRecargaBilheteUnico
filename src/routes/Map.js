@@ -54,8 +54,17 @@ class MapScreen extends Component {
                     region={region}
                     showsUserLocation
                     loadingEnabled
-                />
-                <Search />  
+                >
+                    <MapView.Marker
+                        coordinate={{
+                            latitude: 37.4203085,
+                            longitude: -122.0859565
+                        }}
+                        title={"Test"}
+                        description={"this is a test only"}
+                    />
+                </MapView>
+                <Search />
             </View>
         );
     }

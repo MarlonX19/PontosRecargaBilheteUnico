@@ -1,5 +1,3 @@
-import React, { Component } from 'react';
-import { View, StyleSheet, Image, Button } from 'react-native';
 import { createAppContainer, createDrawerNavigator } from 'react-navigation';
 
 import Home from './Home';
@@ -12,11 +10,11 @@ const MyDrawerNavigator = createDrawerNavigator({
         screen: Home,   
     },
 
-    Mapa: {
+    Map: {
       screen: MapScreen,
     },
 
-    Sobre: {
+    About: {
       screen: About,
     },
 
