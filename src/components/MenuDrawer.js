@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Platform, Image, Dimensions, View, Text, StyleSheet,TouchableOpacity } from 'react-native';
+import {Platform, Image, Dimensions, View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
@@ -20,13 +20,19 @@ class MenuDrawer extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.topLinks}>
-                    <Image style={{ height: 160, width: WIDTH*0.74, }} source={require('../assets/imgs/SPTransCard.jpg')}/>
-                </View>
-                <View style={styles.bottomLinks}>
-                    {this.navLinks('Home', 'Início')}
-                    {this.navLinks('Map', 'Ver mapa')}
-                    {this.navLinks('About', 'Sobre')}
+                <ScrollView style={{ flex: 1 }}>
+                    <View style={styles.topLinks}>
+                        <Image style={{ height: 160, width: WIDTH * 0.74, }} source={require('../assets/imgs/SPTransCard.jpg')} />
+                    </View>
+                    <View style={styles.bottomLinks}>
+                        {this.navLinks('Home', 'Início')}
+                        {this.navLinks('Map', 'Ver mapa')}
+                        {this.navLinks('About', 'Sobre')}
+                    </View>
+                </ScrollView>
+                <View style={styles.footer}>
+                    <Text style={{ fontSize: 14, textAlign: 'left', fontWeight: 'bold' }}>Pontos de recarga</Text>
+                    <Text style={{ fontSize: 14, textAlign: 'right', fontWeight: 'bold' }}>v 1.1</Text>
                 </View>
             </View>
         );
@@ -57,8 +63,17 @@ const styles = StyleSheet.create({
         padding: 6,
         paddingLeft: 10,
         margin: 5,
-        textAlign: 'left'
+        textAlign: 'left',
+    },
+
+    footer: {
+        height: 50,
+        borderTopWidth: 0.4,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-around'
     }
+
 });
 
 export default MenuDrawer;
