@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Platform, Dimensions, View, Text, StyleSheet,TouchableOpacity } from 'react-native';
+import {Platform, Image, Dimensions, View, Text, StyleSheet,TouchableOpacity } from 'react-native';
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
@@ -17,12 +17,11 @@ class MenuDrawer extends Component {
 
     }
 
-
     render() {
         return (
             <View style={styles.container}>
                 <View style={styles.topLinks}>
-                    <Text style={{ paddingTop: 40, color: '#fff' }}>Menu Drawer</Text>
+                    <Image style={{ height: 160, width: WIDTH*0.74, }} source={require('../assets/imgs/SPTransCard.jpg')}/>
                 </View>
                 <View style={styles.bottomLinks}>
                     {this.navLinks('Home', 'Início')}
@@ -42,7 +41,7 @@ const styles = StyleSheet.create({
 
     topLinks: {
         height: 160,
-        backgroundColor: 'black'
+        backgroundColor: 'lightgrey'
     },
 
     bottomLinks: {
@@ -52,7 +51,7 @@ const styles = StyleSheet.create({
         paddingBottom: 400
     },
 
-    link: { 
+    link: {
         flex: 1,
         fontSize: 20,
         padding: 6,
