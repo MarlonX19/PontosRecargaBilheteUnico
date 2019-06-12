@@ -9,7 +9,7 @@ export default class About extends React.Component {
         drawerIcon: ({ tintColor }) => (
           <Image
             source={require('../assets/imgs/aboutIcon.png')}
-            style={{color: 'grey', width: 20, height: 20}}
+            style={{ width: 15, height: 15 }}
           />
         ),
       };

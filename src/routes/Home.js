@@ -9,7 +9,7 @@ export default class Home extends React.Component {
         drawerIcon: ({ tintColor }) => (
           <Image
             source={require('../assets/imgs/homeIcon.png')}
-            style={{color: 'grey', width: 20, height: 20}}
+            style={{ width: 15, height: 15 }}
           />
         ),
       };
@@ -21,14 +21,20 @@ export default class Home extends React.Component {
                   <MenuButton navigation={this.props.navigation} />
               </View>
               <View style={{ flex: 9, alignItems: 'center', justifyContent: 'center', backgroundColor: '#483d8b' }}>
-                  <View style={{ flex: 2, padding: 20 }}>
-                      <Text style={{ fontSize: 20, color: '#fff', fontWeight: 'bold' }}>Veja aqui os pontos comerciais que efetuam recarga para Bilhete Único SP</Text>
+                  <View style={{ flex: 2 }}>
+                      <Text style={{ fontSize: 20, color: '#fff', fontWeight: 'bold', padding: 20  }}>Veja aqui os pontos comerciais que efetuam recarga para Bilhete Único SP</Text>
                   </View>
-                  <View style={{ flex: 5, justifyContent: 'center', alignItems: 'center' }}>
+                  <View style={{ flex: 4 }}>
+                        <Text style={{ fontSize: 14, color: '#fff', padding: 20 }}>Encontre o ponto de recarga de bilhete único mais próximo de você!
+                            São centenas de estabelecimentos comercias espalhadas pela cidade que prestam o
+                            serviço de recarga para as mais variadas modalidades: vale comum, diário, mensal e estudante
+                        </Text>
+                  </View>
+                  <View style={{ flex: 6, justifyContent: 'center', alignItems: 'center' }}>
                       <Button
                           onPress={() => this.props.navigation.navigate('Map')}
                           title="Ver mapa"
-                          color="#841584"
+                          color="green"
                           accessibilityLabel="See the map"
                       />
                   </View>

@@ -11,7 +11,7 @@ class MapScreen extends Component {
         drawerIcon: ({ tintColor }) => (
           <Image
             source={require('../assets/imgs/mapIcon.png')}
-            style={{color: 'grey', width: 20, height: 20}}
+            style={{ width: 15, height: 15 }}
           />
         ),
       };
@@ -60,7 +60,7 @@ class MapScreen extends Component {
                             latitude: 37.4203085,
                             longitude: -122.0859565
                         }}
-                        title={"Test"}
+                        title={"Casa do jhoantan"}
                         description={"this is a test only"}
                     />
                 </MapView>
