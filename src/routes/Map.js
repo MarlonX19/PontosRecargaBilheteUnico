@@ -3,6 +3,7 @@ import { View, Image, Text, StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
 
 import Search from '../components/Search';
+import Directions from '../components/Directions';
 
 
 class MapScreen extends Component {
@@ -17,7 +18,8 @@ class MapScreen extends Component {
       };
 
  state = {
-     region: null
+     region: null,
+     destination: null,
  }
 
     async componentDidMount() {
@@ -44,8 +46,22 @@ class MapScreen extends Component {
         )
     }
 
+
+    handleLocationSelected = (data, { geometry }) => {
+        const { location: {lat: latitude, lng: longitude } } = geometry;
+
+        this.setState({ 
+            destination: {
+                latitude,
+                longitude,
+                title: data.structured_formatting.main_text
+            }
+         })
+            console.log(this.state.destination)
+    }
+
     render() {
-        const { region } = this.state;
+        const { region, destination } = this.state;
 
         return (
             <View style={{ flex: 1 }}>
@@ -54,7 +70,18 @@ class MapScreen extends Component {
                     region={region}
                     showsUserLocation
                     loadingEnabled
+                    ref={ el => this.MapView = el }
                 >
+
+                    {destination && (
+                        <Directions
+                            origin={region}
+                            destination={destination}
+                            onReady={(result) => 
+                            this.MapView.fitToCoordinates(result.coordinates) }
+                        />
+                    )}
+
                     <MapView.Marker
                         coordinate={{
                             latitude: 37.4203085,
@@ -64,7 +91,7 @@ class MapScreen extends Component {
                         description={"this is a test only"}
                     />
                 </MapView>
-                <Search />
+                <Search onLocationSelected={this.handleLocationSelected} />
             </View>
         );
     }
