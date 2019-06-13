@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { View, Image, Text, StyleSheet } from 'react-native';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 
 import Search from '../components/Search';
 import Directions from '../components/Directions';
-
 
 class MapScreen extends Component {
     static navigationOptions = {
@@ -70,26 +69,22 @@ class MapScreen extends Component {
                     region={region}
                     showsUserLocation
                     loadingEnabled
-                    ref={ el => this.MapView = el }
+                    ref={el => this.MapView = el}
                 >
 
                     {destination && (
-                        <Directions
-                            origin={region}
-                            destination={destination}
-                            onReady={(result) => 
-                            this.MapView.fitToCoordinates(result.coordinates) }
-                        />
+                        <Fragment>
+                            <Directions
+                                origin={region}
+                                destination={destination}
+                                onReady={(result) =>
+                                    this.MapView.fitToCoordinates(result.coordinates)}
+                            />
+                            <Marker
+                                coordinate={destination}
+                            />
+                        </Fragment>
                     )}
-
-                    <MapView.Marker
-                        coordinate={{
-                            latitude: 37.4203085,
-                            longitude: -122.0859565
-                        }}
-                        title={"Casa do jhoantan"}
-                        description={"this is a test only"}
-                    />
                 </MapView>
                 <Search onLocationSelected={this.handleLocationSelected} />
             </View>
