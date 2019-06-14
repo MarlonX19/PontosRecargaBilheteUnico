@@ -10,7 +10,7 @@ class MapScreen extends Component {
         drawerLabel: 'Ver mapa',
         drawerIcon: ({ tintColor }) => (
           <Image
-            source={require('../assets/imgs/mapIcon.png')}
+            source={require('../assets/imgs/Map.png')}
             style={{ width: 15, height: 15 }}
           />
         ),

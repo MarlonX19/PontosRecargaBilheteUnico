@@ -8,7 +8,7 @@ export default class About extends React.Component {
         drawerLabel: 'Sobre nós',
         drawerIcon: ({ tintColor }) => (
           <Image
-            source={require('../assets/imgs/aboutIcon.png')}
+            source={require('../assets/imgs/About.png')}
             style={{ width: 15, height: 15 }}
           />
         ),

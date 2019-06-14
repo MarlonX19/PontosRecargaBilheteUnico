@@ -8,11 +8,11 @@ class MenuButton extends Component {
                 <TouchableWithoutFeedback
                     onPress={() => this.props.navigation.toggleDrawer()}
                 >
-                    <Image style={{ width: 35, height: 35, zIndex: 9, position: 'absolute', top: 15, left: 10 }}
+                    <Image style={{ width: 32, height: 32, zIndex: 9, position: 'absolute', top: 15, left: 10 }}
                         source={require('../assets/imgs/iconDrawer.png')}
                     />
                 </TouchableWithoutFeedback>
-                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Pontos de recarga bilhete único</Text>
+                <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Pontos de recarga bilhete único</Text>
             </View>
         );
     }

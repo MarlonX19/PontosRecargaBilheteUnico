@@ -27,6 +27,8 @@ class MenuDrawer extends Component {
                     <View style={styles.bottomLinks}>
                         {this.navLinks('Home', 'Início')}
                         {this.navLinks('Map', 'Ver mapa')}
+                        {this.navLinks('Doubts', 'Dúvidas')}
+                        {this.navLinks('Policy', 'Política de uso')}
                         {this.navLinks('About', 'Sobre')}
                     </View>
                 </ScrollView>

@@ -4,7 +4,9 @@ import { createAppContainer, createDrawerNavigator } from 'react-navigation';
 
 import Home from './Home';
 import MapScreen from './Map';
+import Policy from './Policy';
 import About from './About';
+import Doubts from './Doubts';
 import MenuDrawer from '../components/MenuDrawer';
 
 const WIDTH = Dimensions.get('window').width;
@@ -27,9 +29,18 @@ const MyDrawerNavigator = createDrawerNavigator(
       screen: MapScreen,
     },
 
+    Doubts: {
+      screen: Doubts
+    },
+
+    Policy: {
+      screen: Policy
+    },
+
     About: {
       screen: About,
     },
+
   },
 
   DrawerConfig

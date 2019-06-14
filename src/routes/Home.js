@@ -8,7 +8,7 @@ export default class Home extends React.Component {
         drawerLabel: 'Início',
         drawerIcon: ({ tintColor }) => (
           <Image
-            source={require('../assets/imgs/homeIcon.png')}
+            source={require('../assets/imgs/Home.png')}
             style={{ width: 15, height: 15 }}
           />
         ),
