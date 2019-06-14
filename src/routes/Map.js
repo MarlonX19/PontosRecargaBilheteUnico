@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { View, Image, Text, StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
+import Geocoder from 'react-native-geocoding';
 
 import Search from '../components/Search';
 import Directions from '../components/Directions';
@@ -18,9 +19,9 @@ class MapScreen extends Component {
 
  state = {
      region: null,
-     destination: null,
+     destination: null
  }
-
+    
     async componentDidMount() {
         navigator.geolocation.getCurrentPosition(
             ({ coords: { latitude, longitude } }) => {
@@ -43,6 +44,7 @@ class MapScreen extends Component {
                 enableHighAccuracy: true
             }
         )
+
     }
 
 
@@ -61,7 +63,9 @@ class MapScreen extends Component {
 
     render() {
         const { region, destination } = this.state;
-
+        const { navigation } = this.props;
+        const test = navigation.getParam('test')
+        console.log(test)
         return (
             <View style={{ flex: 1 }}>
                 <MapView
@@ -85,6 +89,20 @@ class MapScreen extends Component {
                             />
                         </Fragment>
                     )}
+
+                    {test.map((marker, index) => (
+                        <Marker
+                            key={index}
+                            coordinate={{
+                                latitude: marker.lat,
+                                longitude: marker.lng
+                            }
+                            }
+                            title={"Banca Zilda"}
+                            description={"Recarga vale comum"}
+                        />
+                    ))}
+
                 </MapView>
                 <Search onLocationSelected={this.handleLocationSelected} />
             </View>
