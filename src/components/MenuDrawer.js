@@ -159,6 +159,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         margin: 5,
         textAlign: 'left',
+        color: '#4A9B30'
     },
 
     footer: {
