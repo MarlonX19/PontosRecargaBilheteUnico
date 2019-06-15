@@ -90,16 +90,16 @@ class MapScreen extends Component {
                         </Fragment>
                     )}
 
-                    {test.map((marker, index) => (
+                    {test.map((marker, index) => ( 
                         <Marker
                             key={index}
                             coordinate={{
-                                latitude: marker.lat,
-                                longitude: marker.lng
+                                latitude: marker.located.location.lat,  
+                                longitude: marker.located.location.lng,
                             }
                             }
-                            title={"Banca Zilda"}
-                            description={"Recarga vale comum"}
+                            title={marker.name}
+                            description={marker.desc}
                         />
                     ))}
 
