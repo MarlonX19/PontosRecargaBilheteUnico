@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, SectionList, Clipboard, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, StyleSheet, SectionList, Linking, TouchableWithoutFeedback } from 'react-native';
 
 import MenuButton from '../components/MenuButton';
 
@@ -10,7 +10,7 @@ class Doubts extends Component {
 
         this.state = {
             data: [
-                { title: 'Para qual cidade está disponível as informações?', data: 
+                { title: 'Para qual cidade há informações disponíveis?', data: 
                 ['O aplicativo mostra apenas os pontos comercial que efetuam recarga para o bilhete único de São Paulo'] },
 
                 { title: 'Todos os pontos listados são confiáveis?', data: 
@@ -19,7 +19,7 @@ class Doubts extends Component {
                 { title: 'Se os pontos são confiáveis porque preciso conferir os dados do comprovante?', data:
                 ['Nada impede que o estabelecimento, além de ter a máquina credenciada tenha também um sistema clandestino'] },
 
-                { title: 'Que dados do comprovnate preciso verificar?', data:
+                { title: 'Que dados do comprovante preciso verificar?', data:
                 ['Verifique o NSU e o número do bilhete, basta inserir esses dados no sistema online da SPTrans para para confirmar se a recarga feita é autêntica ou não'] },
 
                 { title: 'Em qual sistema insiro os dados para confirmar a autenticidade?', data:
@@ -48,7 +48,7 @@ class Doubts extends Component {
                    sections={this.state.data}
                    keyExtractor={( item, index ) => index }
                    renderSectionHeader={( {section} ) => <View style={styles.titleView}><Text style={styles.title} >{section.title}</Text></View> }
-                   renderItem={( {item} ) => <Text style={styles.item}>{item}</Text>  }
+                   renderItem={( {item} ) => item.includes("recibo") ? <Text style={styles.item} onPress={() => Linking.openURL('http://sptrans.com.br/recibo') } >{item}</Text> : <Text style={styles.item}>{item}</Text> }
                    />
                 </View>
             </View>

@@ -4,7 +4,6 @@ import { createAppContainer, createDrawerNavigator } from 'react-navigation';
 
 import Home from './Home';
 import MapScreen from './Map';
-import Policy from './Policy';
 import About from './About';
 import Doubts from './Doubts';
 import MenuDrawer from '../components/MenuDrawer';
@@ -31,10 +30,6 @@ const MyDrawerNavigator = createDrawerNavigator(
 
     Doubts: {
       screen: Doubts
-    },
-
-    Policy: {
-      screen: Policy
     },
 
     About: {

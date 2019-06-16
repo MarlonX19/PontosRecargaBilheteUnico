@@ -81,7 +81,7 @@ class MenuDrawer extends Component {
         var temp = []
 
         this.state.pontos.forEach(element => {
-            console.log(element.properties.Field2)
+            console.log(element.properties.Field2 + element.properties.Field2)
 
             Geocoder.from(element.properties.Field2)
             .then(json => {
@@ -121,7 +121,6 @@ class MenuDrawer extends Component {
                         {this.navLinks('Home', 'Início')}
                         {this.navLinks('Map', 'Ver mapa')}
                         {this.navLinks('Doubts', 'Dúvidas')}
-                        {this.navLinks('Policy', 'Política de uso')}
                         {this.navLinks('About', 'Sobre')}
                     </View>
                 </ScrollView>
