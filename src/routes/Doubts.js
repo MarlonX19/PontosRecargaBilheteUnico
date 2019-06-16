@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, SectionList, Clipboard } from 'react-native';
+import { View, Text, StyleSheet, SectionList, Clipboard, TouchableWithoutFeedback } from 'react-native';
 
 import MenuButton from '../components/MenuButton';
 
@@ -43,12 +43,12 @@ class Doubts extends Component {
                     <MenuButton navigation={this.props.navigation} />
                 </View>
 
-                <View style={{ flex: 9, alignItems: 'flex-start', justifyContent: 'flex-start', backgroundColor: '#BDFBA9', padding: 15   }}>
+                <View style={{ flex: 9, alignItems: 'flex-start', justifyContent: 'flex-start', backgroundColor: 'white', padding: 15   }}>
                 <SectionList
                    sections={this.state.data}
-                   renderSectionHeader={( {section} ) => <Text style={styles.title} >{section.title}</Text> }
-                   renderItem={( {item} ) => <Text style={styles.item}>{item}</Text> }
                    keyExtractor={( item, index ) => index }
+                   renderSectionHeader={( {section} ) => <View style={styles.titleView}><Text style={styles.title} >{section.title}</Text></View> }
+                   renderItem={( {item} ) => <Text style={styles.item}>{item}</Text>  }
                    />
                 </View>
             </View>
@@ -61,17 +61,28 @@ const styles = StyleSheet.create({
         flex: 1,
     },
 
+    titleView:{
+        borderRadius: 10,
+        elevation: 3,
+        margin: 5,
+        backgroundColor: 'lightgrey'
+    },
+
     title: {
-        fontSize: 23,
+        fontSize: 20,
         fontWeight: 'bold',
         marginLeft: 5,
-        marginTop: 10
+        marginTop: 10,
+        color: 'black',
+        marginBottom: 10
     },
 
     item: {
-        fontSize: 16,
+        fontSize: 15,
         fontWeight: '400',
-        marginLeft: 10
+        marginLeft: 10,
+        color: 'grey',
+        marginBottom: 15
     }
 });
 

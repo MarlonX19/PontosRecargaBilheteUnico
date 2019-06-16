@@ -158,8 +158,7 @@ const styles = StyleSheet.create({
         padding: 6,
         paddingLeft: 10,
         margin: 5,
-        textAlign: 'left',
-        color: '#4A9B30'
+        textAlign: 'left'
     },
 
     footer: {
