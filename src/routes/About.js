@@ -40,16 +40,21 @@ export default class About extends React.Component {
 
   render() {
     return (
-
-      <Accordion dataArray={dataArray}
-        icon='arrow-down'
-        expandedIcon='arrow-up'
-        iconStyle={{ color: "green" }}
-        expandedIconStyle={{ color: "red" }}
-        animation={true}
-        expanded={true}
-        renderContent={this._renderContent} />
-
+      <View style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
+          <MenuButton navigation={this.props.navigation} />
+        </View>
+        <View style={{ flex: 9 }}>
+          <Accordion dataArray={dataArray}
+            icon='arrow-down'
+            expandedIcon='arrow-up'
+            iconStyle={{ color: "green" }}
+            expandedIconStyle={{ color: "red" }}
+            animation={true}
+            expanded={true}
+            renderContent={this._renderContent} />
+        </View>
+      </View>
     );
   }
 }
