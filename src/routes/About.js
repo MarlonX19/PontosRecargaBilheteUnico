@@ -10,26 +10,46 @@ const dataArray = [
   { title: "Qual a garantia do app?", content: "O app disponibila em um mapa os pontos comerciais que estão cadastrados perante a SPTrans, porémos responsáveis pelo app se reservam no direito de, a qualquer momento e sem prévio aviso, desativaro serviço ou atualizar a lista de estabelecimentos dentro de prazo próprio. Não garantimos o sucesso dacompra de saldo caso, ao chegar no estabelecimento, o mesmo esteja fechado, não possua mais o sistema de recargaou por qualquer outra razão não consiga concluir a venda do saldo, pois os pontos tem autonomia sob a forma comoo serviço é prestado. Ainda, a única garantia da recarga ser autêntica está no comprovante emitido pela máquina,e nesse caso cabe unicamente ao usuário do bilhete único verificar a autenticidade da recarga concluída." },
   { title: "De onde provém a fonte das informações?", content: "As informações usadas no aplicativo provém da lista de estabelecimentos que a SPTrans fornece e que pode ser acessada no link http://www.sptrans.com.br/media/1359/rede_de_recarga.pdf" },
   { title: "Como contatar o desenvolvedor do app?", content: "Favor entrar em contato através do e-mail pontosrecargabu@protonmail.com" },
-  
+
 ];
 
 export default class About extends React.Component {
-  static navigationOptions = {
-    drawerLabel: 'Sobre nós',
-    drawerIcon: ({ tintColor }) => (
-      <Image
-        source={require('../assets/imgs/About.png')}
-        style={{ width: 15, height: 15 }}
-      />
-    ),
-  };
+
+  _renderContent(item) {
+    if (item.content.includes('pontosrecargabu@protonmail.com')) {
+      return (
+        <Text style={{ margin: 7 }}>Favor entrar em contato através do e-mail <Text style={{ color: 'blue' }} onPress={() => Linking.openURL('mailto:somethingemail@gmail.com')} >pontosrecargabu@protonmail.com</Text></Text>
+      )
+    }
+
+    else if (item.content.includes('http://www.sptrans.com.br/media/1359/rede_de_recarga.pdf')) {
+      return (
+        <Text style={{ margin: 7 }}>As informações usadas no aplicativo provém da lista de estabelecimentos que a SPTrans fornece e que pode ser acessada no link <Text style={{ color: 'blue' }} onPress={() => Linking.openURL('http://tiny.cc/xvm08y')} >http://tiny.cc/xvm08y</Text></Text>
+      )
+    }
+
+    else {
+      return (
+        <Text style={{ margin: 7 }}>
+          {item.content}
+        </Text>
+      );
+    }
+  }
 
 
   render() {
     return (
- 
-          <Accordion dataArray={dataArray} icon='arrow-down' expandedIcon='arrow-up' iconStyle={{ color: "green" }} expandedIconStyle={{ color: "red" }} />
-  
+
+      <Accordion dataArray={dataArray}
+        icon='arrow-down'
+        expandedIcon='arrow-up'
+        iconStyle={{ color: "green" }}
+        expandedIconStyle={{ color: "red" }}
+        animation={true}
+        expanded={true}
+        renderContent={this._renderContent} />
+
     );
   }
 }
