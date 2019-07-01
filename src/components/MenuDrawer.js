@@ -101,7 +101,7 @@ class MenuDrawer extends Component {
     navLinks(nav, text) {
         return (
             <TouchableOpacity
-                style={{ height: 50, backgroundColor: this.state.colorInt++ % 2 == 0 ? '#E8E8E8' : '#fff' }}
+                style={{ height: 50, backgroundColor: this.state.colorInt++ % 2 == 0 ? '#A9DAD6' : '#e3f1f1' }}
                 onPress={() => this.props.navigation.navigate(nav, { test: this.state.teste })}
             >
                 <Text style={styles.link}>{text}</Text>
@@ -165,7 +165,8 @@ const styles = StyleSheet.create({
         borderTopWidth: 0.4,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        backgroundColor: '#e3f1f1'
     }
 
 });

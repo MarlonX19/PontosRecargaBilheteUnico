@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, SectionList, Linking, TouchableWithoutFeedback } from 'react-native';
-import { Container, Header, Content, Accordion } from 'native-base';
+import { View, Text, StyleSheet, ScrollView, Linking, TouchableWithoutFeedback } from 'react-native';
+import { Container, Header, Content, Accordion, Icon } from 'native-base';
 
 import MenuButton from '../components/MenuButton';
 
@@ -12,26 +12,65 @@ const dataArray = [
     { title: "Em qual sistema verifico a autenticidade?", content: "Basta acessar o site http://sptrans.com.br/recibo e selecionar o sistema credenciado onde a recarga foi feita, e na tela que abrir vai ser pedido para inserir o NSU da recarga ou o número do bilhete único ou, ainda, ambos. Caso a recarga seja autência o sistema deve retornar a segunda vida do comprovante, do contrário vai informar que não foi encontrado nenhum dado" },
     { title: "O que fazer se descobrir um ponto cladestino?", content: "Denuncie ligando para o 156" },
     { title: "Os dados são atualizados?", content: "As informações dos pontos provém da própria SPTrans, nossa equipe trabalha para manter as informações atualizadas sempre que possível" }
-  ];
+];
 
 
 class Doubts extends Component {
 
+    _renderHeader(item, expanded) {
+        return (
+            <View style={{
+                flexDirection: "row",
+                padding: 20,
+                margin: 10,
+                justifyContent: "space-between",
+                alignItems: "center",
+                backgroundColor: "#A9DAD6"
+            }}>
+                <Text style={{ fontWeight: "600" }}>
+                    {" "}{item.title}
+                </Text>
+                {expanded
+                    ? <Icon style={{ fontSize: 18 }} name="arrow-up" />
+                    : <Icon style={{ fontSize: 18 }} name="arrow-down" />}
+            </View>
+        );
+    }
+
+    _renderContent(item) {
+        if (item.content.includes('http://sptrans.com.br/recibo')) {
+            return (
+                <Text style={{ margin: 10, backgroundColor: "#e3f1f1", padding: 10 }}>Basta acessar o site <Text style={{ color: 'blue' }} onPress={() => Linking.openURL('http://sptrans.com.br/recibo')}> http://sptrans.com.br/recibo</Text> e selecionar o sistema credenciado onde a recarga foi feita, e na tela que abrir vai ser pedido para inserir o NSU da recarga ou o número do bilhete único ou, ainda, ambos. Caso a recarga seja autência o sistema deve retornar a segunda vida do comprovante, do contrário vai informar que não foi encontrado nenhum dado</Text>
+            )
+        }
+
+        else {
+            return (
+                <Text style={{ margin: 10, backgroundColor: "#e3f1f1", padding: 10 }}>{item.content}</Text>
+            );
+        }
+    }
+
     render() {
         return (
             <View style={{ flex: 1 }}>
-            <View style={{ flex: 1 }}>
-              <MenuButton navigation={this.props.navigation} screenTitle='Dúvidas' />
+                <View style={{ flex: 1 }}>
+                    <MenuButton navigation={this.props.navigation} screenTitle='Dúvidas' />
+                </View>
+                <View style={{ flex: 9 }}>
+                    <ScrollView>
+                        <Accordion dataArray={dataArray}
+                            icon='arrow-down'
+                            expandedIcon='arrow-up'
+                            iconStyle={{ color: "green" }}
+                            expandedIconStyle={{ color: "red" }}
+                            animation={true}
+                            expanded={true}
+                            renderHeader={this._renderHeader}
+                            renderContent={this._renderContent} />
+                    </ScrollView>
+                </View>
             </View>
-            <View style={{ flex: 9 }}>
-              <Accordion dataArray={dataArray}
-                icon='arrow-down'
-                expandedIcon='arrow-up'
-                iconStyle={{ color: "green" }}
-                expandedIconStyle={{ color: "red" }}
-                expanded={true} />
-            </View>
-          </View>
         );
     }
 }
@@ -41,7 +80,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
 
-    titleView:{
+    titleView: {
         borderRadius: 10,
         elevation: 3,
         margin: 5,
