@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Image, ScrollView, StyleSheet, Linking } from 'react-native';
-import { Container, Header, Content, Accordion } from 'native-base';
+import { Container, Header, Content, Accordion, Icon } from 'native-base';
 
 import MenuButton from '../components/MenuButton';
 
@@ -15,22 +15,42 @@ const dataArray = [
 
 export default class About extends React.Component {
 
+  _renderHeader(item, expanded) {
+    return (
+      <View style={{
+        flexDirection: "row",
+        padding: 20,
+        margin: 10,
+        justifyContent: "space-between",
+        alignItems: "center" ,
+        backgroundColor: "#A9DAD6" }}>
+      <Text style={{ fontWeight: "600" }}>
+          {" "}{item.title}
+        </Text>
+        {expanded
+          ? <Icon style={{ fontSize: 18 }} name="arrow-up" />
+          : <Icon style={{ fontSize: 18 }} name="arrow-down" />}
+      </View>
+    );
+  }
+
+
   _renderContent(item) {
     if (item.content.includes('pontosrecargabu@protonmail.com')) {
       return (
-        <Text style={{ margin: 7 }}>Favor entrar em contato através do e-mail <Text style={{ color: 'blue' }} onPress={() => Linking.openURL('mailto:somethingemail@gmail.com')} >pontosrecargabu@protonmail.com</Text></Text>
+        <Text style={{ margin: 10, backgroundColor: "#e3f1f1", padding: 10 }}>Favor entrar em contato através do e-mail <Text style={{ color: 'blue' }} onPress={() => Linking.openURL('mailto:somethingemail@gmail.com')} >pontosrecargabu@protonmail.com</Text></Text>
       )
     }
 
     else if (item.content.includes('http://www.sptrans.com.br/media/1359/rede_de_recarga.pdf')) {
       return (
-        <Text style={{ margin: 7 }}>As informações usadas no aplicativo provém da lista de estabelecimentos que a SPTrans fornece e que pode ser acessada no link <Text style={{ color: 'blue' }} onPress={() => Linking.openURL('http://tiny.cc/xvm08y')} >http://tiny.cc/xvm08y</Text></Text>
+        <Text style={{ margin: 10, backgroundColor: "#e3f1f1", padding: 10 }}>As informações usadas no aplicativo provém da lista de estabelecimentos que a SPTrans fornece e que pode ser acessada no link <Text style={{ color: 'blue' }} onPress={() => Linking.openURL('http://tiny.cc/xvm08y')} >http://tiny.cc/xvm08y</Text></Text>
       )
     }
 
     else {
       return (
-        <Text style={{ margin: 7 }}>
+        <Text style={{ margin: 10, backgroundColor: "#e3f1f1", padding: 10 }}>
           {item.content}
         </Text>
       );
@@ -52,6 +72,7 @@ export default class About extends React.Component {
             expandedIconStyle={{ color: "red" }}
             animation={true}
             expanded={true}
+            renderHeader={this._renderHeader}
             renderContent={this._renderContent} />
         </View>
       </View>
