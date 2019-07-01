@@ -21,7 +21,7 @@ class Doubts extends Component {
         return (
             <View style={{ flex: 1 }}>
             <View style={{ flex: 1 }}>
-              <MenuButton navigation={this.props.navigation} />
+              <MenuButton navigation={this.props.navigation} screenTitle='Dúvidas' />
             </View>
             <View style={{ flex: 9 }}>
               <Accordion dataArray={dataArray}

@@ -12,7 +12,7 @@ class MenuButton extends Component {
                         source={require('../assets/imgs/iconDrawer.png')}
                     />
                 </TouchableWithoutFeedback>
-                <Text style={{ fontSize: 16, fontWeight: 'bold' }}>Pontos de recarga bilhete único</Text>
+                <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{this.props.screenTitle}</Text>
             </View>
         );
     }

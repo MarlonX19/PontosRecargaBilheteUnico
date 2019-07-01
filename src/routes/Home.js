@@ -18,7 +18,7 @@ export default class Home extends React.Component {
       return (
           <View style={{ flex: 1 }}>
               <View style={{ flex: 1 }}>
-                  <MenuButton navigation={this.props.navigation} />
+                  <MenuButton navigation={this.props.navigation} screenTitle='Pontos de recarga Bilhete Único' />
               </View>
               <View style={{ flex: 9, alignItems: 'center', justifyContent: 'center', backgroundColor: 'white' }}>
                   <View style={{ flex: 2, backgroundColor: 'lightgrey', borderRadius: 5, elevation: 3, justifyContent: 'center', alignItems: 'center', marginHorizontal: 10, marginVertical: 5 }}>

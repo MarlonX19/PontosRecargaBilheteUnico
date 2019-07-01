@@ -42,7 +42,7 @@ export default class About extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
-          <MenuButton navigation={this.props.navigation} />
+          <MenuButton navigation={this.props.navigation} screenTitle='Sobre o app' />
         </View>
         <View style={{ flex: 9 }}>
           <Accordion dataArray={dataArray}
