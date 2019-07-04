@@ -126,7 +126,7 @@ class MenuDrawer extends Component {
                 </ScrollView>
                 <View style={styles.footer}>
                     <Text style={{ fontSize: 14, textAlign: 'left', fontWeight: 'bold' }}>Pontos de recarga</Text>
-                    <Text style={{ fontSize: 14, textAlign: 'right', fontWeight: 'bold' }}>v 1.1</Text>
+                    <Text style={{ fontSize: 14, textAlign: 'right', fontWeight: 'bold' }}>v 1.2</Text>
                 </View>
             </View>
         );

@@ -7,15 +7,6 @@ import Search from '../components/Search';
 import Directions from '../components/Directions';
 
 class MapScreen extends Component {
-    static navigationOptions = {
-        drawerLabel: 'Ver mapa',
-        drawerIcon: ({ tintColor }) => (
-            <Image
-                source={require('../assets/imgs/Map.png')}
-                style={{ width: 15, height: 15 }}
-            />
-        ),
-    };
 
     state = {
         region: null,
