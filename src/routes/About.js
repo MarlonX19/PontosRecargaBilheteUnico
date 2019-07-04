@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, ScrollView, StyleSheet, Linking } from 'react-native';
+import { View, Text, Image, ScrollView, StyleSheet, Linking, StatusBar } from 'react-native';
 import { Container, Header, Content, Accordion, Icon } from 'native-base';
 
 import MenuButton from '../components/MenuButton';
@@ -22,9 +22,10 @@ export default class About extends React.Component {
         padding: 20,
         margin: 10,
         justifyContent: "space-between",
-        alignItems: "center" ,
-        backgroundColor: "#A9DAD6" }}>
-      <Text style={{ fontWeight: "600" }}>
+        alignItems: "center",
+        backgroundColor: "#A9DAD6"
+      }}>
+        <Text style={{ fontWeight: "600" }}>
           {" "}{item.title}
         </Text>
         {expanded
@@ -61,6 +62,10 @@ export default class About extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor="#e3f1f1"
+        />
         <View style={{ flex: 1 }}>
           <MenuButton navigation={this.props.navigation} screenTitle='Sobre o app' />
         </View>

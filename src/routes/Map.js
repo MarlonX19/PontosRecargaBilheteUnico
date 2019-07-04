@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { View, Image, Text, StyleSheet } from 'react-native';
+import { View, Image, Text, StyleSheet, StatusBar } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import Geocoder from 'react-native-geocoding';
 
@@ -10,18 +10,18 @@ class MapScreen extends Component {
     static navigationOptions = {
         drawerLabel: 'Ver mapa',
         drawerIcon: ({ tintColor }) => (
-          <Image
-            source={require('../assets/imgs/Map.png')}
-            style={{ width: 15, height: 15 }}
-          />
+            <Image
+                source={require('../assets/imgs/Map.png')}
+                style={{ width: 15, height: 15 }}
+            />
         ),
-      };
+    };
 
- state = {
-     region: null,
-     destination: null
- }
-    
+    state = {
+        region: null,
+        destination: null
+    }
+
     async componentDidMount() {
         navigator.geolocation.getCurrentPosition(
             ({ coords: { latitude, longitude } }) => {
@@ -29,15 +29,15 @@ class MapScreen extends Component {
                 console.log(longitude)
                 console.log("succesfully got user's region")
                 this.setState({
-                        region: {
-                            latitude: latitude,
-                            longitude: longitude,
-                            latitudeDelta: 0.0143,
-                            longitudeDelta: 0.0134
-                        }
+                    region: {
+                        latitude: latitude,
+                        longitude: longitude,
+                        latitudeDelta: 0.0143,
+                        longitudeDelta: 0.0134
+                    }
                 })
             },
-            () => { console.log("not able to get user's region")},
+            () => { console.log("not able to get user's region") },
 
             {
                 timeout: 5000,
@@ -49,16 +49,16 @@ class MapScreen extends Component {
 
 
     handleLocationSelected = (data, { geometry }) => {
-        const { location: {lat: latitude, lng: longitude } } = geometry;
+        const { location: { lat: latitude, lng: longitude } } = geometry;
 
-        this.setState({ 
+        this.setState({
             destination: {
                 latitude,
                 longitude,
                 title: data.structured_formatting.main_text
             }
-         })
-            console.log(this.state.destination)
+        })
+        console.log(this.state.destination)
     }
 
     render() {
@@ -68,6 +68,10 @@ class MapScreen extends Component {
         console.log(test)
         return (
             <View style={{ flex: 1 }}>
+                <StatusBar
+                    barStyle="dark-content"
+                    backgroundColor="#e3f1f1"
+                />
                 <MapView
                     style={{ flex: 1 }}
                     region={region}
@@ -90,11 +94,11 @@ class MapScreen extends Component {
                         </Fragment>
                     )}
 
-                    {test.map((marker, index) => ( 
+                    {test.map((marker, index) => (
                         <Marker
                             key={index}
                             coordinate={{
-                                latitude: marker.located.location.lat,  
+                                latitude: marker.located.location.lat,
                                 longitude: marker.located.location.lng,
                             }
                             }

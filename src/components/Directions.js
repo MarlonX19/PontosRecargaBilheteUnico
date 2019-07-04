@@ -8,8 +8,8 @@ const Directions = ({ destination, origin, onReady }) => {
             origin={ origin }
             onReady={ onReady }
             apikey= 'AIzaSyBhAwIwcJLk10RVN1eQIWGiESlcZZnFjcE'
-            strokeWidth={3}
-            strokeColor='red'
+            strokeWidth={2}
+            strokeColor='green'
        />
     );
 };

@@ -15,7 +15,7 @@ class Search extends Component {
 
         return (
            <GooglePlacesAutocomplete
-                placeholder="Onde você vai?"
+                placeholder="Aonde você vai?"
                 placeholderTextColor="#333"
                 onPress={onLocationSelected}
                 query={{

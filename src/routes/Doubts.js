@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView, Linking, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Linking, TouchableWithoutFeedback, StatusBar } from 'react-native';
 import { Container, Header, Content, Accordion, Icon } from 'native-base';
 
 import MenuButton from '../components/MenuButton';
@@ -54,6 +54,10 @@ class Doubts extends Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
+                <StatusBar
+                    barStyle="dark-content"
+                    backgroundColor="#e3f1f1"
+                />
                 <View style={{ flex: 1 }}>
                     <MenuButton navigation={this.props.navigation} screenTitle='Dúvidas' />
                 </View>
