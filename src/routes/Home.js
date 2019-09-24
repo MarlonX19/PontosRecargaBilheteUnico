@@ -33,7 +33,7 @@ export default class Home extends React.Component {
           </View>
           <Image style={{ width: 80, height: 80 }} source={require('../assets/imgs/storeIcon.png')} />
         </View>
-
+ 
         <View style={styles.mainCards}>
           <View style={{ flexDirection: 'column', flex: 1 }}>
             <Text style={styles.title}>Use seu crédito</Text>
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     fontFamily: 'sans-serif-thin',
     fontSize: 18,
     fontWeight: 'bold',
-    color:"#A9DAD6"
+    color:"#A7B2DD"
   },
 
   description: {

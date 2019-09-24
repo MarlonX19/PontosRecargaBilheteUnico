@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react';
-import { View, Image, Text, StyleSheet, StatusBar } from 'react-native';
+import { View, Image, Text, StyleSheet, StatusBar, Clipboard, ToastAndroid } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import Geocoder from 'react-native-geocoding';
 
 import Search from '../components/Search';
 import Directions from '../components/Directions';
+import markerImage from '../assets/imgs/gps.png';
 
 class MapScreen extends Component {
 
@@ -25,7 +26,9 @@ class MapScreen extends Component {
                         longitude: longitude,
                         latitudeDelta: 0.0143,
                         longitudeDelta: 0.0134
-                    }
+                    },
+
+                    clipboardContent: null
                 })
             },
             () => { console.log("not able to get user's region") },
@@ -51,6 +54,19 @@ class MapScreen extends Component {
         })
         console.log(this.state.destination)
     }
+
+
+     writeToClipboard = async (markername) => {
+        //To copy the text to clipboard
+        await Clipboard.setString(markername);
+        ToastAndroid.showWithGravityAndOffset(
+            'Endereço copiado!',
+            ToastAndroid.LONG,
+            ToastAndroid.BOTTOM,
+            25,
+            150,
+          );
+      };
 
     render() {
         const { region, destination } = this.state;
@@ -95,6 +111,9 @@ class MapScreen extends Component {
                             }
                             title={marker.name}
                             description={marker.desc}
+                            anchor={{ x: 0, y:0 }}
+                            image={markerImage}
+                            onPress={() => this.writeToClipboard(marker.name)}
                         />
                     ))}
 
