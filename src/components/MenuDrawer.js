@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Platform, Image, Dimensions, View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import Geocoder from 'react-native-geocoding';
+import Geocoder from 'react-native-geocoding'
+import firebase from 'firebase';
+
+import {data} from '../../sensibleData'
+
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
@@ -10,84 +14,42 @@ class MenuDrawer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            pontos: [
-                {
-                    "type": null,
-                    "properties": {
-                        "Field1": "APARECIDA",
-                        "Field2": "AVENIDA Júlio Prestes, S/N, Centro",
-                        "Field3": "Centro",
-                        "Field4": "APARECIDA",
-                        "Field5": "01257‐900",
-                        "Field6": "COMUM",
-                        "Field7": "SANTUARIO NACIONAL DE NOSSA SENHORA DA CONCEICAO APARECIDA",
-                        "Field8": "SANTUARIO NACIONAL DE NOSSA SENHORA DA CONCEICAO APARECIDA",
-                        "Field9": "Auto Atendimento (Máquinas)"
-                    }
-                },
-                {
-                    "type": null,
-                    "properties": {
-                        "Field1": "ARUJA",
-                        "Field2": "AVENIDA Joao Manoel, 150, BOX 52",
-                        "Field3": "Centro",
-                        "Field4": "ARUJA",
-                        "Field5": "07400‐605",
-                        "Field6": "COMUM",
-                        "Field7": "ARUJA AUDIO E VIDEO",
-                        "Field8": "ARUJA AUDIO E VIDEO",
-                        "Field9": "Venda e Recarga (Assistida)"
-                    }
-                },
-                {
-                    "type": null,
-                    "properties": {
-                        "Field1": "SAO PAULO",
-                        "Field2": "RUA Ismael Neri, 810  0",
-                        "Field3": "Agua Fria",
-                        "Field4": "ZONA NORTE",
-                        "Field5": "02335‐001",
-                        "Field6": "COMUM",
-                        "Field7": "BANCA LANTERNA",
-                        "Field8": "BANCA LANTERNA",
-                        "Field9": "Venda e Recarga (Assistida)"
-                    }
-                },
-                {
-                    "type": null,
-                    "properties": {
-                        "Field1": "SAO PAULO",
-                        "Field2": "RUA MARIA AMALIA LOPES AZEVEDO 281",
-                        "Field3": "VILA ALBERTINA",
-                        "Field4": "ZONA NORTE",
-                        "Field5": "02350‐000",
-                        "Field6": "ESCOLAR‐COMUM‐VALE TRANSPORTE‐FIDELIDADE‐LAZER‐MENSAL‐DIARIO‐LIVRE",
-                        "Field7": "CHAVEIRO",
-                        "Field8": "CHAVEIRO NUNES",
-                        "Field9": "Recarga Assistida"
-                    }
-                }
-            ],
+            pontos: data,
 
             teste: [],
             colorInt: 0
         }
     }
 
+    componentWillMount(){
+        var firebaseConfig = {
+            apiKey: "AIzaSyC_SCYnIm2fMh35xwIls7j2IP1d3q1Bxgk",
+            authDomain: "pontosderecarga-65918.firebaseapp.com",
+            databaseURL: "https://pontosderecarga-65918.firebaseio.com",
+            projectId: "pontosderecarga-65918",
+            storageBucket: "",
+            messagingSenderId: "405018465778",
+            appId: "1:405018465778:web:21189d4681ccab3eae476b",
+            measurementId: "G-S1YYB3G7FL"
+          };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+    }
+
     componentDidMount() {
-        // to do only once
+      // to do only once
         Geocoder.init('AIzaSyBhAwIwcJLk10RVN1eQIWGiESlcZZnFjcE'); // use a valid API key
 
         var temp = []
 
         this.state.pontos.forEach(element => {
-            console.log(element.properties.Field2 + element.properties.Field2)
+            console.log(element.properties.Field2 + element.properties.Field3)
 
             Geocoder.from(element.properties.Field2)
                 .then(json => {
                     var location = json.results[0].geometry.location;
                     console.log(location);
-                    temp.push({ located: { location }, name: element.properties.Field8, desc: element.properties.Field6 })
+                    temp.push({ located: { location }, name: element.properties.Field8, desc: element.properties.Field6, endereco: element.properties.Field2, bairro: element.properties.Field3 })
                     console.log(temp)
                 })
                 .catch(error => console.warn(error));

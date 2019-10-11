@@ -4,15 +4,20 @@ import { View, Text, Image, TouchableWithoutFeedback } from 'react-native';
 class MenuButton extends Component {
     render() {
         return (
-            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                <TouchableWithoutFeedback
-                    onPress={() => this.props.navigation.toggleDrawer()}
-                >
-                    <Image style={{ width: 32, height: 32, zIndex: 9, position: 'absolute', top: 15, left: 10 }}
-                        source={require('../assets/imgs/iconDrawer.png')}
-                    />
-                </TouchableWithoutFeedback>
-                <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{this.props.screenTitle}</Text>
+            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
+                <View style={{ flex: 0.3, paddingLeft: 5 }}>
+                    <TouchableWithoutFeedback
+                        onPress={() => this.props.navigation.toggleDrawer()}
+                    >
+                        <Image style={{ width: 32, height: 32 }}
+                            source={require('../assets/imgs/iconDrawer.png')}
+                        />
+
+                    </TouchableWithoutFeedback>
+                </View>
+                <View style={{ flex: 1.7 }}>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold', alignSelf: 'auto'}}>{this.props.screenTitle}</Text>
+                </View>
             </View>
         );
     }

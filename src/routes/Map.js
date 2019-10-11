@@ -42,7 +42,7 @@ class MapScreen extends Component {
     }
 
 
-    handleLocationSelected = (data, { geometry }) => {
+    handleLocationSelected = async (data, { geometry }) => {
         const { location: { lat: latitude, lng: longitude } } = geometry;
 
         this.setState({
@@ -56,9 +56,9 @@ class MapScreen extends Component {
     }
 
 
-     writeToClipboard = async (markername) => {
+     writeToClipboard = async (markerEndereco, markerBairro) => {
         //To copy the text to clipboard
-        await Clipboard.setString(markername);
+        await Clipboard.setString(markerEndereco + " " + markerBairro);
         ToastAndroid.showWithGravityAndOffset(
             'Endereço copiado!',
             ToastAndroid.LONG,
@@ -113,7 +113,7 @@ class MapScreen extends Component {
                             description={marker.desc}
                             anchor={{ x: 0, y:0 }}
                             image={markerImage}
-                            onPress={() => this.writeToClipboard(marker.name)}
+                            onPress={() => this.writeToClipboard(marker.endereco, marker.bairro)}
                         />
                     ))}
 

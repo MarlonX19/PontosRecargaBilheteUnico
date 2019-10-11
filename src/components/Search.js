@@ -13,9 +13,10 @@ class Search extends Component {
         const { isSearchFocused } = this.state;
         const { onLocationSelected } = this.props;
 
+
         return (
            <GooglePlacesAutocomplete
-                placeholder="Aonde você vai?"
+                placeholder= 'Aonde voce vai?'
                 placeholderTextColor="#333"
                 onPress={onLocationSelected}
                 query={{

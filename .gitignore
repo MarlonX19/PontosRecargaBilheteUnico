@@ -57,3 +57,6 @@ buck-out/
 
 # Hides config info
 src/config/**
+
+# Hides sensible data
+sensibleData.js
